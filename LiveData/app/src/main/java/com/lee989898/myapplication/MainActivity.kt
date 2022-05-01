@@ -3,6 +3,7 @@ package com.lee989898.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lee989898.myapplication.databinding.ActivityMainBinding
 
@@ -19,11 +20,12 @@ class MainActivity : AppCompatActivity() {
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainActivityViewModel::class.java]
 
-        binding.resultTextView.text = viewModel.getTotal().toString()
+        viewModel.totalData.observe(this, Observer {
+            binding.resultTextView.text = it.toString()
+        })
 
         binding.insertButton.setOnClickListener {
             viewModel.setTotal(binding.inputEditText.text.toString().toInt())
-            binding.resultTextView.text = viewModel.getTotal().toString()
         }
 
     }
