@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.example.coroutine.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     private var count = 0
@@ -19,13 +23,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnDownloadUserData.setOnClickListener {
-            downloadUserData()
+
+            CoroutineScope(Dispatchers.IO).launch {
+                downloadUserData()
+            }
         }
     }
 
-    private fun downloadUserData() {
+    private suspend fun downloadUserData() {
         for (i in 1..200000) {
-            Log.i("MyTag", "Downloading user $i in ${Thread.currentThread().name}")
+            withContext(Dispatchers.Main){
+                binding.tvUserMessage.text = "Downloading user $i in ${Thread.currentThread().name}"
+            }
         }
     }
 }
