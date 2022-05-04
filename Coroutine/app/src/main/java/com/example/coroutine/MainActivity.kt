@@ -24,17 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnDownloadUserData.setOnClickListener {
 
-            CoroutineScope(Dispatchers.IO).launch {
-                downloadUserData()
+            CoroutineScope(Dispatchers.Main).launch {
+                binding.tvUserMessage.text = UserDataManager().getTotalUserCount().toString()
             }
         }
     }
 
-    private suspend fun downloadUserData() {
-        for (i in 1..200000) {
-            withContext(Dispatchers.Main){
-                binding.tvUserMessage.text = "Downloading user $i in ${Thread.currentThread().name}"
-            }
-        }
-    }
 }
