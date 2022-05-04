@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setBackgroundColor(Color.YELLOW)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter =
-            MyRecyclerViewAdapter(fruitsList) { selectedItem: Fruit ->
+            MyRecyclerViewAdapter(fruitsList1) { selectedItem: Fruit ->
                 listItemClicked(selectedItem)
             }
     }
