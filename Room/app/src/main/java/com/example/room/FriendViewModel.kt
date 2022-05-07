@@ -29,8 +29,8 @@ class FriendViewModel(private val friendRepository: FriendRepository) : ViewMode
     val message: LiveData<Event<String>> get() = statusMessage
 
     init {
-        saveOrUpdateButtonText.value = "Save"
-        deleteAllOrDeleteButtonText.value = "Clear All"
+        saveOrUpdateButtonText.value = "저장"
+        deleteAllOrDeleteButtonText.value = "모두 삭제"
     }
 
     fun saveOrUpdate() {
@@ -68,7 +68,7 @@ class FriendViewModel(private val friendRepository: FriendRepository) : ViewMode
         viewModelScope.launch {
             val newRowId = friendRepository.insertFriend(friend)
             if (newRowId > -1) {
-                statusMessage.value = Event("친구 추가 성공적 $newRowId")
+                statusMessage.value = Event("$newRowId 친구 추가 성공 ")
             } else {
                 statusMessage.value = Event("오류 발생")
             }
@@ -82,9 +82,9 @@ class FriendViewModel(private val friendRepository: FriendRepository) : ViewMode
                 inputName.value = null
                 inputEmail.value = null
                 isUpdateOrDelete = false
-                saveOrUpdateButtonText.value = "save"
-                deleteAllOrDeleteButtonText.value = "delete All"
-                statusMessage.value = Event("$noOfRows 친구 업데이트 성공적")
+                saveOrUpdateButtonText.value = "저장"
+                deleteAllOrDeleteButtonText.value = "모두 삭제"
+                statusMessage.value = Event("$noOfRows 친구 업데이트 성공")
             } else {
                 statusMessage.value = Event("오류 발생")
             }
@@ -99,9 +99,9 @@ class FriendViewModel(private val friendRepository: FriendRepository) : ViewMode
                 inputName.value = null
                 inputEmail.value = null
                 isUpdateOrDelete = false
-                saveOrUpdateButtonText.value = "save"
-                deleteAllOrDeleteButtonText.value = "delete All"
-                statusMessage.value = Event("$noOfRowsDeleted 친구 삭제 성공적")
+                saveOrUpdateButtonText.value = "저장"
+                deleteAllOrDeleteButtonText.value = "모두 삭제"
+                statusMessage.value = Event("$noOfRowsDeleted 친구 삭제 성공")
             } else {
                 statusMessage.value = Event("오류 발생")
             }
@@ -113,7 +113,7 @@ class FriendViewModel(private val friendRepository: FriendRepository) : ViewMode
         viewModelScope.launch {
             val noOfRowsDeleted = friendRepository.deleteAll()
             if (noOfRowsDeleted > 0) {
-                statusMessage.value = Event("$noOfRowsDeleted 친구 모두 삭제 성공적")
+                statusMessage.value = Event("$noOfRowsDeleted 친구 모두 삭제 성공")
             } else {
                 statusMessage.value = Event("오류 발생")
             }
@@ -125,8 +125,8 @@ class FriendViewModel(private val friendRepository: FriendRepository) : ViewMode
         inputEmail.value = friend.email
         isUpdateOrDelete = true
         friendToUpdateOrDelete = friend
-        saveOrUpdateButtonText.value = "Update"
-        deleteAllOrDeleteButtonText.value = "delete"
+        saveOrUpdateButtonText.value = "업데이트"
+        deleteAllOrDeleteButtonText.value = "삭제"
     }
 
 }

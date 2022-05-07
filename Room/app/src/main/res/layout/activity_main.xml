@@ -19,26 +19,26 @@
         tools:context=".MainActivity">
 
         <EditText
-            android:id="@+id/name_text"
+            android:id="@+id/main_name_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginBottom="5dp"
             android:ems="10"
-            android:hint="friend's name"
+            android:hint="친구 이름"
             android:inputType="textPersonName"
             android:text="@={friendViewModel.inputName}"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/email_text"
+            android:id="@+id/main_email_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:ems="10"
-            android:hint="friend's email"
+            android:hint="친구 이메일"
             android:inputType="textPersonName"
             android:text="@={friendViewModel.inputEmail}"
             android:textStyle="bold" />
@@ -49,23 +49,23 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/save_or_update_button"
+                android:id="@+id/main_save_or_update_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{()->friendViewModel.saveOrUpdate()}"
                 android:text="@{friendViewModel.saveOrUpdateButtonText}"
                 android:textSize="18sp"
-                android:onClick="@{()->friendViewModel.saveOrUpdate()}"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/clear_all_or_delete_button"
+                android:id="@+id/main_clear_all_or_delete_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{()->friendViewModel.deleteAllOrDelete()}"
                 android:text="@{friendViewModel.deleteAllOrDeleteButtonText}"
                 android:textSize="18sp"
-                android:onClick="@{()->friendViewModel.deleteAllOrDelete()}"
                 android:textStyle="bold" />
 
         </LinearLayout>

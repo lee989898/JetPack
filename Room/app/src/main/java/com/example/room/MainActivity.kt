@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayFriendsList() {
         friendViewModel.getSaveFriends().observe(this, Observer {
-            Log.i("LEE", it.toString())
             friendAdapter.setList(it)
             friendAdapter.notifyDataSetChanged()
         })
