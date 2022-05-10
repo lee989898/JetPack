@@ -1,8 +1,11 @@
 package com.example.dagger2
 
 import android.util.Log
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SmartPhone(val battery: Battery, val simCard: SIMCard, val memoryCard: MemoryCard) {
+@Singleton
+class SmartPhone @Inject constructor(val battery: Battery, val simCard: SIMCard, val memoryCard: MemoryCard) {
 
     init {
         battery.getPower()

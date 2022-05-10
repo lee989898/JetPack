@@ -1,13 +1,9 @@
 package com.example.dagger2
 
 import android.util.Log
+import javax.inject.Inject
 
-class Battery {
-    init {
-        Log.i("MYTAG","Battery Constructed")
-    }
+interface Battery {
 
-    fun getPower(){
-        Log.i("MYTAG","Battery power is available")
-    }
+    fun getPower()
 }
