@@ -1,0 +1,34 @@
+package com.example.cleanmvvm.presentation.di.core
+
+import com.example.cleanmvvm.data.repository.artist.datasource.ArtistsCacheDataSource
+import com.example.cleanmvvm.data.repository.artist.datasourceimpl.ArtistsCacheDataSourceImpl
+import com.example.cleanmvvm.data.repository.movie.datasource.MovieCacheDataSource
+import com.example.cleanmvvm.data.repository.movie.datasourceimpl.MovieCacheDataSourceImpl
+import com.example.cleanmvvm.data.repository.tvshow.datasource.TvShowCacheDataSource
+import com.example.cleanmvvm.data.repository.tvshow.datasourceimpl.TvShowCacheDataSourceImpl
+import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
+
+@Module
+class CacheDataModule {
+
+    @Singleton
+    @Provides
+    fun provideMovieCacheDataSource(): MovieCacheDataSource {
+        return MovieCacheDataSourceImpl()
+    }
+
+    @Singleton
+    @Provides
+    fun provideArtistCacheDataSource(): ArtistsCacheDataSource {
+        return ArtistsCacheDataSourceImpl()
+    }
+
+    @Singleton
+    @Provides
+    fun provideTvShowCacheDataSource(): TvShowCacheDataSource {
+        return TvShowCacheDataSourceImpl()
+    }
+
+}
