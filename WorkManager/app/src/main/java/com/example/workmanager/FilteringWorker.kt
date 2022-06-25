@@ -13,7 +13,7 @@ class FilteringWorker(context: Context, params: WorkerParameters) : Worker(conte
 
     override fun doWork(): Result {
         try {
-            for (i in 0..3000) {
+            for (i in 0..100) {
                 Log.i("LEE", "Filtering $i")
             }
             return Result.success()

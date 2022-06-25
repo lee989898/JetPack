@@ -10,7 +10,7 @@ class CompressingWorker(context: Context, params: WorkerParameters) : Worker(con
 
     override fun doWork(): Result {
         try {
-            for (i in 0..300) {
+            for (i in 0..100) {
                 Log.i("LEE", "Compressing $i")
             }
             return Result.success()

@@ -12,7 +12,7 @@ class DownloadingWorker(context: Context, params: WorkerParameters) : Worker(con
 
     override fun doWork(): Result {
         try {
-            for (i in 0..3000) {
+            for (i in 0..100) {
                 Log.i("LEE", "Downloading $i")
             }
             val time = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")

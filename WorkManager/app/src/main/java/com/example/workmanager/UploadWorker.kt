@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import java.io.IOException
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,6 +30,8 @@ class UploadWorker(context: Context, params: WorkerParameters) : Worker(context,
                 .build()
 
             return Result.success(outPutData)
+        } catch (e: IOException) {
+            return Result.retry()
         } catch (e: Exception) {
             return Result.failure()
         }
